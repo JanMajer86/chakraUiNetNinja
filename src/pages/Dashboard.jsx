@@ -1,37 +1,36 @@
-import { Box, Container, Heading, Text } from "@chakra-ui/react";
+import { Box, SimpleGrid } from "@chakra-ui/react";
 
 export default function Dashboard() {
-	const boxStyles = {
-		p: "10px",
-		bg: "purple.400",
-		color: "white",
-		m: "10px",
-		textAlign: "center",
-		filter: "blur(2px)",
-		_hover: {
-			color: "black",
-			bg: "blue.200",
-			filter: "none",
-		},
-	};
+	// const boxStyles = {
+	// 	p: "10px",
+	// 	bg: "purple.400",
+	// 	color: "white",
+	// 	m: "10px",
+	// 	textAlign: "center",
+	// 	filter: "blur(2px)",
+	// 	_hover: {
+	// 		color: "black",
+	// 		bg: "blue.200",
+	// 		filter: "none",
+	// 	},
+	// };
 
 	return (
-		<Container as="section" maxWidth="2xl" py="20px">
-			<Heading my="30px" p="10px">
-				Chakra UI Components
-			</Heading>
-			<Text ml="30px">
-				Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nulla, earum.
-			</Text>
-			<Text marginLeft="30px" color="blue.300" fontWeight="bold">
-				Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nulla, earum.
-			</Text>
+		<SimpleGrid p="10px" columns={4} gap={10} minChildWidth={"250px"}>
+			<Box h="50px" bg="whiteAlpha.500" border="1px solid"></Box>
+			<Box h="50px" bg="whiteAlpha.500" border="1px solid"></Box>
+			<Box h="50px" bg="whiteAlpha.500" border="1px solid"></Box>
+			<Box h="50px" bg="whiteAlpha.500" border="1px solid"></Box>
 
-			<Box my="30px" p="20px" bg="orange">
-				<Text color="white">This is a box</Text>
-			</Box>
+			<Box h="50px" bg="whiteAlpha.500" border="1px solid"></Box>
+			<Box h="50px" bg="whiteAlpha.500" border="1px solid"></Box>
+			<Box h="50px" bg="whiteAlpha.500" border="1px solid"></Box>
+			<Box h="50px" bg="whiteAlpha.500" border="1px solid"></Box>
 
-			<Box css={boxStyles}>Hello, Ninjas!</Box>
-		</Container>
+			<Box h="50px" bg="whiteAlpha.500" border="1px solid"></Box>
+			<Box h="50px" bg="whiteAlpha.500" border="1px solid"></Box>
+			<Box h="50px" bg="whiteAlpha.500" border="1px solid"></Box>
+			<Box h="50px" bg="whiteAlpha.500" border="1px solid"></Box>
+		</SimpleGrid>
 	);
 }
