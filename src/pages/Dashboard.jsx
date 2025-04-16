@@ -1,4 +1,5 @@
 import {
+	Avatar,
 	Box,
 	Button,
 	Card,
@@ -32,9 +33,10 @@ export default function Dashboard() {
 							<Card.Header>
 								<Text>
 									<Flex gap={5}>
-										<Box w="50px" h="50px">
-											<Text>AV</Text>
-										</Box>
+										<Avatar.Root>
+											<Avatar.Fallback name={task.author} />
+											<Avatar.Image src={task.img} />
+										</Avatar.Root>
 										<Box>
 											<Heading as="h3" size="sm">
 												{task.title}
