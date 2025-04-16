@@ -1,4 +1,4 @@
-import { HStack, Icon, List, Link, Flex } from "@chakra-ui/react";
+import { Icon, List, Link, Flex } from "@chakra-ui/react";
 import { NavLink as RouterNavLink } from "react-router-dom";
 
 // icons

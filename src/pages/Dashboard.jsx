@@ -1,36 +1,76 @@
-import { Box, SimpleGrid } from "@chakra-ui/react";
+import {
+	Box,
+	Button,
+	Card,
+	Flex,
+	Heading,
+	HStack,
+	Icon,
+	Separator,
+	SimpleGrid,
+	Text,
+} from "@chakra-ui/react";
+
+import { FaEye, FaRegEdit } from "react-icons/fa";
+
+import { useLoaderData } from "react-router-dom";
 
 export default function Dashboard() {
-	// const boxStyles = {
-	// 	p: "10px",
-	// 	bg: "purple.400",
-	// 	color: "white",
-	// 	m: "10px",
-	// 	textAlign: "center",
-	// 	filter: "blur(2px)",
-	// 	_hover: {
-	// 		color: "black",
-	// 		bg: "blue.200",
-	// 		filter: "none",
-	// 	},
-	// };
+	const tasks = useLoaderData();
 
 	return (
-		<SimpleGrid p="10px" columns={4} gap={10} minChildWidth={"250px"}>
-			<Box h="50px" bg="whiteAlpha.500" border="1px solid"></Box>
-			<Box h="50px" bg="whiteAlpha.500" border="1px solid"></Box>
-			<Box h="50px" bg="whiteAlpha.500" border="1px solid"></Box>
-			<Box h="50px" bg="whiteAlpha.500" border="1px solid"></Box>
+		<SimpleGrid gap={10} minChildWidth={"300px"}>
+			{tasks &&
+				tasks.map((task) => {
+					return (
+						<Card.Root
+							key={task.id}
+							borderTopWidth="20px"
+							borderTopColor="purple.400"
+							bg="white"
+						>
+							<Card.Header>
+								<Text>
+									<Flex gap={5}>
+										<Box w="50px" h="50px">
+											<Text>AV</Text>
+										</Box>
+										<Box>
+											<Heading as="h3" size="sm">
+												{task.title}
+											</Heading>
+											<Text>by {task.author}</Text>
+										</Box>
+									</Flex>
+								</Text>
+							</Card.Header>
 
-			<Box h="50px" bg="whiteAlpha.500" border="1px solid"></Box>
-			<Box h="50px" bg="whiteAlpha.500" border="1px solid"></Box>
-			<Box h="50px" bg="whiteAlpha.500" border="1px solid"></Box>
-			<Box h="50px" bg="whiteAlpha.500" border="1px solid"></Box>
+							<Card.Body color="gray.500">
+								<Text>{task.description}</Text>
+							</Card.Body>
 
-			<Box h="50px" bg="whiteAlpha.500" border="1px solid"></Box>
-			<Box h="50px" bg="whiteAlpha.500" border="1px solid"></Box>
-			<Box h="50px" bg="whiteAlpha.500" border="1px solid"></Box>
-			<Box h="50px" bg="whiteAlpha.500" border="1px solid"></Box>
+							<Separator mb="8" borderColor={"gray.200"} />
+
+							<Card.Footer>
+								<HStack>
+									<Button variant="ghost">
+										<Icon as={FaEye} />
+										Watch
+									</Button>
+									<Button variant="outline">
+										<Icon as={FaRegEdit} />
+										Comment
+									</Button>
+								</HStack>
+							</Card.Footer>
+						</Card.Root>
+					);
+				})}
 		</SimpleGrid>
 	);
 }
+
+export const tasksLoader = async () => {
+	const res = await fetch("http://localhost:3000/tasks");
+	return res.json();
+};

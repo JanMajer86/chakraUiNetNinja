@@ -11,7 +11,7 @@ import {
 export default function Navbar() {
 	return (
 		// <Flex as="nav" p="10px" alignItems="center" gap="10px">
-		<Flex as="nav" p="10px" alignItems="center">
+		<Flex as="nav" p="10px" alignItems="center" color="black" mb="8">
 			<Heading as="h1">Dojo Tasks</Heading>
 			<Spacer />
 			<HStack gap="20px">
